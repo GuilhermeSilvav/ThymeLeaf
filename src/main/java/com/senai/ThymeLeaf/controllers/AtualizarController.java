@@ -32,9 +32,9 @@ public class AtualizarController {
         return "redirect:/listausuarios";
     }
 
-    @PostMapping("/atualizar/{id}")
-    public String atualizarUsuario(@PathVariable Long id, @ModelAttribute UsuarioDto usuarioDto) {
+    @PostMapping("/{id}")
+    public String atualizarUsuario(@PathVariable Long id, @ModelAttribute("usuario") UsuarioDto usuarioDto) {
         boolean sucesso = usuarioService.atualizarUsuario(id, usuarioDto);
-        return sucesso ? "redirect:/listausuarios" : "redirect:/visualizarusuario/" + id + "?erro";
+        return sucesso ? "redirect:/home" : "redirect:/visualizarusuario/" + id + "?erro";
     }
 }
